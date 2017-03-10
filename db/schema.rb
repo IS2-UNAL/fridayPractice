@@ -34,9 +34,11 @@ ActiveRecord::Schema.define(version: 20170303194811) do
   create_table "comments", force: :cascade do |t|
     t.text     "comment"
     t.integer  "origin_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["origin_id"], name: "index_comments_on_origin_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "event_users", force: :cascade do |t|
@@ -104,6 +106,7 @@ ActiveRecord::Schema.define(version: 20170303194811) do
   add_foreign_key "category_products", "categories"
   add_foreign_key "category_products", "products"
   add_foreign_key "comments", "comments", column: "origin_id"
+  add_foreign_key "comments", "users"
   add_foreign_key "event_users", "events"
   add_foreign_key "event_users", "users"
   add_foreign_key "favorite_products", "products"

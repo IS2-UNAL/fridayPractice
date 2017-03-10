@@ -8,7 +8,4 @@ class Category < ApplicationRecord
   validates :name, uniqueness: true
   validates :name, length: {minimum: 3}
 
-  def self.load_categories
-    includes(:products)
-  end
 end
