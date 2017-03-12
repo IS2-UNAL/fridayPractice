@@ -35,9 +35,11 @@ ActiveRecord::Schema.define(version: 20170303194811) do
     t.text     "comment"
     t.integer  "origin_id"
     t.integer  "user_id"
+    t.integer  "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["origin_id"], name: "index_comments_on_origin_id", using: :btree
+    t.index ["post_id"], name: "index_comments_on_post_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
@@ -106,6 +108,7 @@ ActiveRecord::Schema.define(version: 20170303194811) do
   add_foreign_key "category_products", "categories"
   add_foreign_key "category_products", "products"
   add_foreign_key "comments", "comments", column: "origin_id"
+  add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "event_users", "events"
   add_foreign_key "event_users", "users"
