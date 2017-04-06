@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+  # Include default devise modules.
+  devise :database_authenticatable, :registerable,
+          :recoverable, :rememberable, :trackable, :validatable,
+          :confirmable
+  include DeviseTokenAuth::Concerns::User
   default_scope {order("users.email ASC")}
   scope :order_by_email, -> (type) {order("users.email #{type}")}
   has_many :posts

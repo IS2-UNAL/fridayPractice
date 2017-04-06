@@ -26,6 +26,11 @@ gem 'puma', '~> 3.0'
 # gem 'rack-cors'
 
 gem 'will_paginate', '~> 3.1.0'
+gem 'devise_token_auth'
+gem 'devise'
+gem 'omniauth'
+gem 'rack-cors', :require => 'rack/cors'
+
 
 
 group :development, :test do
